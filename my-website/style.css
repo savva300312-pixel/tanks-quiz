@@ -1,0 +1,237 @@
+/* Общие стили для всей страницы */
+body {
+    background-color: #121214; /* Глубокий темный фон */
+    color: #e1e1e6; /* Светлый текст */
+    font-family: 'Segoe UI', Roboto, Helvetica, Arial, sans-serif;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    min-height: 100vh;
+    margin: 0;
+    padding: 20px;
+    box-sizing: border-box;
+}
+
+/* Главный контейнер карточки */
+/* 1. Увеличили ширину всей карточки до 650px и добавили внутренние отступы */
+.quiz-container {
+    background-color: #1e1e24; 
+    border: 1px solid #29292e;
+    border-radius: 16px;
+    padding: 50px 40px;      /* Сделали больше отступы внутри */
+    max-width: 650px;        /* Было 450px, теперь карточка стала намного шире */
+    width: 100%;
+    text-align: center;
+    box-shadow: 0 15px 40px rgba(0, 0, 0, 0.6);
+}
+
+/* 2. Сделали картинку выше (340px вместо 250px), чтобы танк выглядел мощно */
+.image-placeholder {
+    width: 100%;
+    height: 340px;           /* Картинка стала больше и выше */
+    background-color: #1a1a22; 
+    border-radius: 12px;
+    overflow: hidden;
+    position: relative;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin-bottom: 35px;
+    box-shadow: inset 0 0 20px rgba(0,0,0,0.6); 
+}
+
+/* 3. Увеличили размер шрифта для заголовка */
+.quiz-title {
+    font-size: 34px;         /* Было 28px — теперь текст крупнее */
+    margin: 0 0 20px 0;
+    color: #ffffff;
+    font-weight: 700;
+    letter-spacing: 0.5px;
+}
+
+.quiz-image {
+    width: 100%;
+    height: 100%;
+    object-fit: cover; /* Заполняет блок, центрируя танк */
+    object-position: center; /* Центрирует картинку ровно посередине */
+    position: absolute;
+    top: 0;
+    left: 0;
+}
+
+
+
+
+/* Текст поверх картинки (пока она не загружена) */
+.image-text {
+    position: relative;
+    z-index: 1;
+    color: #8f8f9d;
+    font-size: 14px;
+    font-weight: 500;
+}
+
+
+/* Описание */
+.quiz-description {
+    font-size: 16px;
+    line-height: 1.6;
+    color: #a8a8b3;
+    margin-bottom: 35px;
+}
+
+/* Стильная неоновая кнопка */
+.start-btn {
+    display: inline-block;
+    background-color: #00e676; /* Яркий зеленый акцент */
+    color: #0a0a0c; /* Темный текст на кнопке для читаемости */
+    text-decoration: none;
+    padding: 16px 40px;
+    font-size: 18px;
+    font-weight: 600;
+    border-radius: 30px;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+    transition: all 0.3s ease;
+    box-shadow: 0 4px 15px rgba(0, 230, 118, 0.3);
+}
+
+/* Эффект при наведении на кнопку */
+.start-btn:hover {
+    background-color: #00c853;
+    transform: translateY(-3px); /* Кнопка слегка приподнимается */
+    box-shadow: 0 6px 20px rgba(0, 230, 118, 0.5); /* Свечение усиливается */
+}
+
+/* Эффект при клике */
+.start-btn:active {
+    transform: translateY(-1px);
+}
+/* --- СТИЛИ ДЛЯ СТРАНИЦЫ С ВОПРОСАМИ --- */
+
+/* Индикатор номера вопроса сверху */
+.quiz-progress {
+    font-size: 14px;
+    text-transform: uppercase;
+    letter-spacing: 2px;
+    color: #00e676; /* Зеленый неоновый цвет */
+    margin-bottom: 15px;
+    font-weight: 600;
+}
+
+/* Крупный текст самого вопроса */
+.quiz-question {
+    font-size: 26px;
+    color: #ffffff;
+    margin: 0 0 30px 0;
+    font-weight: 600;
+    line-height: 1.4;
+}
+
+/* Контейнер, который выстраивает кнопки друг под другом */
+.answers-container {
+    display: flex;
+    flex-direction: column;
+    gap: 15px; /* Расстояние между кнопками */
+}
+
+/* Крупные интерактивные кнопки ответов */
+.answer-btn {
+    background-color: #2a2a32; /* Темный фон кнопки */
+    color: #e1e1e6;
+    border: 2px solid #3a3a44;
+    border-radius: 10px;
+    padding: 18px 25px;
+    font-size: 18px;
+    font-weight: 500;
+    text-align: left; /* Текст вариантов выровнен по левому краю */
+    cursor: pointer;
+    transition: all 0.25s ease;
+    width: 100%;
+    box-sizing: border-box;
+}
+
+/* Эффект наведения на вариант ответа */
+.answer-btn:hover {
+    background-color: #34343d;
+    border-color: #00e676; /* Подсветка зеленым при наведении */
+    color: #ffffff;
+    transform: translateX(5px); /* Кнопка слегка сдвигается вправо */
+}
+
+/* Стили для выбранного ответа (когда кликнули) */
+.answer-btn.selected {
+    background-color: rgba(0, 230, 118, 0.1);
+    border-color: #00e676;
+    color: #00e676;
+    box-shadow: 0 0 15px rgba(0, 230, 118, 0.2);
+}
+/* --- НОВЫЕ СТИЛИ ДЛЯ КНОПКИ ДАЛЕЕ И ФИНАЛА --- */
+
+/* Кнопка Далее по умолчанию (заблокирована) */
+.next-btn {
+    margin-top: 25px;
+    width: 100%;
+    padding: 16px;
+    font-size: 18px;
+    font-weight: 600;
+    border: none;
+    border-radius: 10px;
+    background-color: #292930;
+    color: #575761;
+    cursor: not-allowed; /* Курсор запрета */
+    transition: all 0.3s ease;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+}
+
+/* Кнопка Далее становится активной, когда выбран вариант */
+.next-btn.active {
+    background-color: #ffffff;
+    color: #121214;
+    cursor: pointer;
+}
+
+.next-btn.active:hover {
+    background-color: #e1e1e6;
+    transform: translateY(-2px);
+}
+
+/* Большой круглый или квадратный блок с процентами */
+.percentage-box {
+    font-size: 64px;
+    font-weight: 800;
+    color: #00e676;
+    margin: 20px 0;
+    text-shadow: 0 0 20px rgba(0, 230, 118, 0.3);
+}
+
+/* Контейнер для списка ответов над кнопкой "Играть снова" */
+.review-container {
+    text-align: left;
+    margin: 30px 0;
+    max-height: 250px;
+    overflow-y: auto; /* Если вопросов много, появится аккуратная прокрутка */
+    padding-right: 5px;
+}
+
+/* Карточка разбора вопроса */
+.review-item {
+    background-color: #16161a;
+    border-left: 4px solid #3a3a44;
+    padding: 12px 15px;
+    margin-bottom: 12px;
+    border-radius: 0 8px 8px 0;
+    font-size: 15px;
+    line-height: 1.5;
+}
+
+/* Если ответил правильно — зеленая рамка слева */
+.review-item.correct-item {
+    border-left-color: #00e676;
+}
+
+/* Если ответил неправильно — красная рамка слева */
+.review-item.wrong-item {
+    border-left-color: #ff3333;
+}
